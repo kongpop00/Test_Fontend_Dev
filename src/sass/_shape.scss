@@ -1,0 +1,51 @@
+$bg-color: #706f6f;
+
+@mixin shape( $color,$width, $hight,$radius, $border-style, $border-width, $border-color) {
+  background-color: $color;
+  width: $width;
+  height: $hight;
+  border-radius: $radius;
+  border-style: $border-style;
+  border-width: $border-width;
+  border-color: $border-color;
+}
+
+.circle {
+  @include shape( $bg-color, 120px,120px,50%,solid,0,$bg-color);
+  margin:auto;
+ 
+  
+}
+.squares {
+  @include shape($bg-color, 120px, 120px, 0, solid, 0, $bg-color);
+ 
+  margin:auto
+}
+.rectangle {
+  @include shape($bg-color, 200px, 120px, 0, solid, 0, $bg-color);
+  margin:auto
+}
+.triangle {
+  @include shape(transform,0,0,0,solid, 0 70px 150px 70px,transparent transparent $bg-color transparent);
+  margin:auto
+}
+
+.oval{
+  @include shape( $bg-color, 200px,100px,80%,solid,0,$bg-color);
+  margin:auto
+}
+.parallelogram{
+  @include shape( $bg-color, 150px,80px,0,solid,0,$bg-color);
+  transform: skew(20deg);
+  margin:auto;
+}
+.trapezoid{
+
+  width: 140px;
+  border-bottom: 70px solid $bg-color;
+	border-left: 30px solid transparent;
+	border-right: 30px solid transparent;
+  margin:auto;
+
+
+}

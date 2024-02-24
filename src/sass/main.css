@@ -1,0 +1,135 @@
+.circle {
+  background-color: #706f6f;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border-style: solid;
+  border-width: 0;
+  border-color: #706f6f;
+  margin: auto;
+}
+
+.squares {
+  background-color: #706f6f;
+  width: 120px;
+  height: 120px;
+  border-radius: 0;
+  border-style: solid;
+  border-width: 0;
+  border-color: #706f6f;
+  margin: auto;
+}
+
+.rectangle {
+  background-color: #706f6f;
+  width: 200px;
+  height: 120px;
+  border-radius: 0;
+  border-style: solid;
+  border-width: 0;
+  border-color: #706f6f;
+  margin: auto;
+}
+
+.triangle {
+  background-color: transform;
+  width: 0;
+  height: 0;
+  border-radius: 0;
+  border-style: solid;
+  border-width: 0 70px 150px 70px;
+  border-color: transparent transparent #706f6f transparent;
+  margin: auto;
+}
+
+.oval {
+  background-color: #706f6f;
+  width: 200px;
+  height: 100px;
+  border-radius: 80%;
+  border-style: solid;
+  border-width: 0;
+  border-color: #706f6f;
+  margin: auto;
+}
+
+.parallelogram {
+  background-color: #706f6f;
+  width: 150px;
+  height: 80px;
+  border-radius: 0;
+  border-style: solid;
+  border-width: 0;
+  border-color: #706f6f;
+  transform: skew(20deg);
+  margin: auto;
+}
+
+.trapezoid {
+  width: 140px;
+  border-bottom: 70px solid #706f6f;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  margin: auto;
+}
+
+.btn {
+  width: 100%;
+  background-color: #ffffff;
+  height: 100%;
+  border: none;
+}
+
+.btn:hover {
+  background-color: #ffa200 !important;
+}
+.btn:hover .circle {
+  background-color: rgb(247, 248, 248);
+}
+.btn:hover .squares {
+  background-color: rgb(247, 248, 248);
+}
+.btn:hover .rectangle {
+  background-color: rgb(247, 248, 248);
+}
+.btn:hover .oval {
+  background-color: rgb(247, 248, 248);
+}
+.btn:hover .parallelogram {
+  background-color: rgb(247, 248, 248);
+}
+.btn:hover .trapezoid {
+  border-bottom: 70px solid rgb(247, 248, 248);
+}
+
+.btnAbs {
+  width: 180px;
+  height: 30px;
+  background-color: #6eda78;
+  position: absolute;
+  bottom: -25px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 400;
+  color: white;
+  border-radius: 20px;
+}
+
+.flex {
+  width: 80%;
+}
+
+@media only screen and (max-width: 1250px) {
+  .flex {
+    width: 100%;
+  }
+}
+.viewTest1 {
+  background: rgb(110, 218, 120);
+  background: linear-gradient(90deg, rgb(110, 218, 120) 0%, rgb(255, 162, 0) 100%);
+}/*# sourceMappingURL=main.css.map */

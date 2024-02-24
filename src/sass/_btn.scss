@@ -1,0 +1,53 @@
+$colororange: #ffa200;
+$colorGreen: #6eda78;
+$colorwhite: #ffffff;
+.btn {
+    width: 100%;
+    background-color: #ffffff ;
+    height: 100%;
+    border: none;
+}
+
+.btn:hover{
+    background-color: $color1 !important;
+    .circle{
+        background-color: $colorwhite;
+    }
+    .squares{
+        background-color: $colorwhite;
+    }
+    .rectangle{
+        background-color: $colorwhite;
+    }
+    .oval{
+        background-color:$colorwhite;
+    }
+   .parallelogram{
+        background-color: $colorwhite;
+    }
+   .trapezoid{
+    border-bottom: 70px solid $colorwhite;
+   
+   }
+}
+
+
+ 
+.btnAbs{
+    width: 180px;
+    height: 30px;
+    background-color: #6eda78;
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: auto;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   font-size: 18px;
+   font-weight: 400;
+   color: white;
+   border-radius: 20px;
+   
+}
