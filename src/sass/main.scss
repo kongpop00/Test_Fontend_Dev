@@ -2,17 +2,6 @@
 
 @use 'shape';
 @use 'btn';
+@use 'test1';
 
-.flex{
-    width: 80%;
-}
-@media only screen and (max-width: 1250px) {
-    .flex {
-        width:100%
-        
-    }
-  }
-.viewblackground{
-background: rgb(110,218,120);
-background: linear-gradient(90deg, $colorGreen 0%, $colororange 100%);
-}
+

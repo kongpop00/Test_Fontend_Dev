@@ -75,7 +75,7 @@
 
 .btn {
   width: 100%;
-  background-color: #ffffff;
+  background-color: white;
   height: 100%;
   border: none;
 }
@@ -84,22 +84,22 @@
   background-color: #ffa200 !important;
 }
 .btn:hover .circle {
-  background-color: rgb(247, 248, 248);
+  background-color: #ffffff;
 }
 .btn:hover .squares {
-  background-color: rgb(247, 248, 248);
+  background-color: #ffffff;
 }
 .btn:hover .rectangle {
-  background-color: rgb(247, 248, 248);
+  background-color: #ffffff;
 }
 .btn:hover .oval {
-  background-color: rgb(247, 248, 248);
+  background-color: #ffffff;
 }
 .btn:hover .parallelogram {
-  background-color: rgb(247, 248, 248);
+  background-color: #ffffff;
 }
 .btn:hover .trapezoid {
-  border-bottom: 70px solid rgb(247, 248, 248);
+  border-bottom: 70px solid #ffffff;
 }
 
 .btnAbs {
@@ -129,7 +129,7 @@
     width: 100%;
   }
 }
-.viewTest1 {
+.viewblackground {
   background: rgb(110, 218, 120);
-  background: linear-gradient(90deg, rgb(110, 218, 120) 0%, rgb(255, 162, 0) 100%);
+  background: linear-gradient(90deg, #6eda78 0%, #ffa200 100%);
 }/*# sourceMappingURL=main.css.map */

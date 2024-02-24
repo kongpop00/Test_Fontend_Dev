@@ -1,15 +1,16 @@
 $colororange: #ffa200;
 $colorGreen: #6eda78;
 $colorwhite: #ffffff;
+
 .btn {
     width: 100%;
-    background-color: #ffffff ;
+    background-color:white;
     height: 100%;
     border: none;
 }
 
 .btn:hover{
-    background-color: $color1 !important;
+    background-color: $colororange !important;
     .circle{
         background-color: $colorwhite;
     }

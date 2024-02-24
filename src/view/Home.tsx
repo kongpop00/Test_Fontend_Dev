@@ -27,7 +27,7 @@ const Home = () => {
   return (
     <Flex
     className="viewblackground"
-     style={{width:"100%" , height:"100vh ", backgroundColor:"red"}}
+     style={{width:"100%" , height:"100vh "}}
      justify="center"
      align="center"
      gap={30}

@@ -1,4 +1,9 @@
+
+$colororange: #ffa200;
+$colorGreen: #6eda78;
+$colorwhite: #ffffff;
 $bg-color: #706f6f;
+
 
 @mixin shape( $color,$width, $hight,$radius, $border-style, $border-width, $border-color) {
   background-color: $color;
