@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react"
+import {  useState } from "react"
 import Test_1Style from "../component/Test_1Style"
-import Nav from "../component/Nav";
+
 
 export interface Props{
   handleMove_Position? :()=>void
