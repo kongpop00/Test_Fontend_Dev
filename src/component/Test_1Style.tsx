@@ -1,4 +1,5 @@
 import { Button, Col, Flex, Row } from 'antd'
+import Nav from './Nav';
 export interface Props{
     handleMove_Position : ()=>void;
     shape : string[];
@@ -12,20 +13,24 @@ const Test_1Style = ( { handleMove_Position , shape ,handleRandom ,arrayShape,is
 
 
   return (
+    <>
+ 
     <Row 
     className="viewblackground"
     style={{padding:"20px", width: "auto", height: "100vh" }} justify={"center"}>
+     <Nav/>
       <Flex
         className="flex"
         style={{
-          height: "230px",
-          marginTop:"100px",
+          
+          marginTop:"110px",
           margin: "auto",
          
           
         }}
         vertical={true}
       >
+   
         <Row
           justify="center"
           gutter={20}
@@ -58,12 +63,17 @@ const Test_1Style = ( { handleMove_Position , shape ,handleRandom ,arrayShape,is
         </Row>
       </Flex>
 {/**----------------------------------------------------------------------------------------- */}
+     <Flex
+     vertical={true}
+     style={{width:"100%", marginTop:"100px"}}
+     gap={20}
+     align='center'
+     
+     >
+     
       <Flex
        className="flex"
-       style={{
-          marginTop: "80px",
-        }}
-        vertical={true}
+       vertical={true}
       >
         <Row
           justify={isMove_Position ? "end" : "center"}
@@ -82,13 +92,9 @@ const Test_1Style = ( { handleMove_Position , shape ,handleRandom ,arrayShape,is
         </Row>
       </Flex>
 
-
       <Flex
-         className="flex"
-        style={{
-          marginBottom: "100px",
-        }}
-        vertical={true}
+      className="flex"
+      vertical={true}
       >
         <Row
            justify={!isMove_Position ? "end" : "center"}
@@ -106,7 +112,12 @@ const Test_1Style = ( { handleMove_Position , shape ,handleRandom ,arrayShape,is
           </Col>
         </Row>
       </Flex>
+
+      </Flex>
+
+
     </Row>
+    </>
   )
 }
 

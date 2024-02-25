@@ -1,5 +1,6 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Test_1Style from "../component/Test_1Style"
+import Nav from "../component/Nav";
 
 export interface Props{
   handleMove_Position? :()=>void
@@ -12,6 +13,10 @@ const Test_1 = () => {
 
     const [arrayShape ,setArrayShape]=useState<number[] >([0,1,2,3,4,5])
   const [isMove_Position , setIsMove_Position]=useState<boolean>(false)
+
+
+  
+
 
   const handleRandom =():void=>{
       let newArrayShape:number[]=[]
@@ -46,6 +51,7 @@ const Test_1 = () => {
   ];
   return (
     <div>
+   
        <Test_1Style  handleMove_Position={handleMove_Position} shape={shape}  handleRandom ={handleRandom } arrayShape={arrayShape}  isMove_Position={ isMove_Position}/>
     </div>
   )
