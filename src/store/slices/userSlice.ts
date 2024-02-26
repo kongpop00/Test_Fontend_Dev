@@ -1,43 +1,52 @@
-  {/** import {PayloadAction, createSlice} from '@reduxjs/toolkit'
-import { RootState } from '../store';
+import { createSlice } from '@reduxjs/toolkit'
+//import type { PayloadAction } from '@reduxjs/toolkit'
+import { RootState } from '../store'
 
 
 
-interface useserData {
-   
+interface User {
+    id : number;
+    prefix : string;
     name : string;
-    lastname : string;
+    lastname :string;
+    birth : string;
+    nationality : string ;
+    idCard : string;
+    phone : string;
+    gerder: string;
+    passport : string;
+    slary : string
+
+
+
 }
 
-const initialvalue:useserData[] =
-[
-{
-    name : "kong",
-    lastname : "nualsaard",
-},
-{
-    name : "kong",
-    lastname : "nualsaard",
-},
-{
-    name : "kong",
-    lastname : "nualsaard",
-},
-]
+
+const initialState: User = {
+    id : 0,
+    prefix :"",
+    name :"",
+    lastname:"",
+    birth :"",
+    nationality:"",
+    idCard :"",
+    phone :"",
+    gerder:"",
+    passport :"",
+    slary :"",
+}
+
+export const CreateUser = createSlice({
+  name: 'createUser',
+  initialState:initialState ,
+  reducers: {
 
 
-export  const userSlice = createSlice({
-    name: "userData",
-    initialState : initialvalue,
-    reducers:{
-     changname :(state:useserData ,action:PayloadAction<string>)=>{
-            return state.name = "action"; 
-        }
-    },
- 
+   
+  },
 })
 
-//export const { changname} =userSlice.action;
-export const userDataSelector= (store :RootState) =>store.userReducer; // เอาไปใช้งาน แค่ usertDataselector
-export default userSlice.reducer ;
-*/}
+
+// Other code such as selectors can use the imported `RootState` type
+export const selectCount = (state: RootState) => state.counter.value
+

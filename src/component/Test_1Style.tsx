@@ -1,5 +1,10 @@
 import { Button, Col, Flex, Row } from 'antd'
 import Nav from './Nav';
+import { useTranslation } from 'react-i18next';
+
+
+
+
 export interface Props{
     handleMove_Position : ()=>void;
     shape : string[];
@@ -10,7 +15,7 @@ export interface Props{
 
 const Test_1Style = ( { handleMove_Position , shape ,handleRandom ,arrayShape,isMove_Position} :Props) => {
   
-
+  const {t} =useTranslation(['home' ,'main'])
 
   return (
     <>
@@ -40,7 +45,7 @@ const Test_1Style = ( { handleMove_Position , shape ,handleRandom ,arrayShape,is
             <Button className={"btn"}>
               <div className="triangle" style={{ transform: "rotate(270deg)", position:"relative"   }} />
             </Button>
-            <label className="btnAbs">Move Shape</label>
+            <label className="btnAbs">{t("MoveShape", {ns:['main ' , 'home']})}</label>
           </Col>
           <Col span={12}>
             <Button onClick={handleMove_Position} className={"btn"}>
@@ -49,7 +54,7 @@ const Test_1Style = ( { handleMove_Position , shape ,handleRandom ,arrayShape,is
                 <div className="triangle"style={{ transform: "rotate(180deg)" }} />
               </Flex>
             </Button>
-            <label className="btnAbs">Move Position</label>
+            <label className="btnAbs">{t("MovePosition", {ns:['main ' , 'home']})}</label>
           </Col>
           <Col span={6}>
             <Button className={"btn"}>
@@ -58,7 +63,7 @@ const Test_1Style = ( { handleMove_Position , shape ,handleRandom ,arrayShape,is
                 style={{ transform: "rotate(90deg)" }}
               />
             </Button>
-            <label className="btnAbs">Move Shape</label>
+            <label className="btnAbs">{t("MoveShape", {ns:['main ' , 'home']})}</label>
           </Col>
         </Row>
       </Flex>
