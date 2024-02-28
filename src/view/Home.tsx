@@ -21,7 +21,7 @@ const Home = () => {
     {
       title: "Test 3",
       sunTitle: "asdasd",
-      link: "sadas",
+      link: "/test3",
     },
   ];
   return (

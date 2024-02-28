@@ -2,9 +2,9 @@ import { Flex, Select } from 'antd'
 import { useTranslation } from 'react-i18next'
 
 
-const Nav = () => {
+const NavTest_1 = () => {
 
-  const {t , i18n} =useTranslation(['home' ,'main'])
+  const {t , i18n} =useTranslation(['th' ,'en'])
 
     const handleChange = (value: string) => {
        // console.log(`selected ${value}`);
@@ -17,7 +17,7 @@ const Nav = () => {
     align='center'
     justify='space-between'
     >
-     <h1 style={{fontSize:"55px"}}>{t("navLayout", {ns:['main ' , 'home']})}</h1>
+     <h3 style={{fontSize:"55px" ,fontWeight:500}}>{t("navLayout", {ns:['en' , 'th']})}</h3>
     
      <Select
     defaultValue="EN"
@@ -39,4 +39,4 @@ const Nav = () => {
   )
 }
 
-export default Nav
+export default  NavTest_1

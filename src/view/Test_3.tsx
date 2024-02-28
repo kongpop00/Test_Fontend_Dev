@@ -1,44 +1,43 @@
-import { Card, Flex} from "antd"
-import FormContent from "../component/form/FormMain"
-import Nav from "../component/Nav"
-import DataTable from "../component/DataTable"
-
-
-
+import { Card, Flex } from "antd";
+import FormContent from "../component/form/FormMain";
+import DataTable from "../component/DataTable";
+import NavTest_3 from "../component/NavTest_3";
 
 const Test_3 = () => {
   return (
-    <div className="viewblackground">
-      <Nav/>
+    <div className="viewblackground" style={{ height: "100%",paddingInline:"120px" }}>
+      <NavTest_3  />
       <Flex
-      vertical={true}
-      align="center"
-      justify="center"
-      style={{width:"100%", height:"500px"}}
+        vertical={true}
+        align="center"
+        justify="center"
+        style={{ width: "100%", height: "500px" }}
       >
-      <Card
+        <Card
+          style={{
+            width: 950,
+            height: 430,
+            backgroundColor: "transparent",
+            borderColor: "black",
+            marginBottom:"70px"
+          }}
+        >
+          <FormContent />
+        </Card>
+      </Flex>
+
+      <div
         style={{
-          width: 950,
-          height: 430,
-          backgroundColor: "transparent",
-          borderColor: "black",
-          marginTop:"120px"
+       
+          width: "80%",
+          height: "100%",
+          margin: "auto",
         }}
       >
-       <FormContent/>
-      
-
-
-
-      </Card>
-      </Flex>
-      <div style={{height:"400px", width:"80%",  marginTop:"100px", margin:"auto",}}>
-      <DataTable/>
+        <DataTable />
       </div>
-   
     </div>
-  )
-}
+  );
+};
 
-export default Test_3
-    
+export default Test_3;

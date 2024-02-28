@@ -6,12 +6,12 @@ import { initReactI18next } from 'react-i18next'
 
 const resources ={
     en :{
-        home : en,
-        main : en,
+        en : en,
+        th : en,
     },
     th :{
-        home : th,
-        main : th,
+       en : th,
+       th : th,
     }
 }
 
