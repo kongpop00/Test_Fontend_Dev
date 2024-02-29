@@ -10,13 +10,12 @@ import {
   Select,
 } from "antd";
 import nationality_TH from "./nationlity_TH.json";
+import nationality_en from './nationality .json'
 import codephone from "./codephone.json";
 import {  useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, userSelector } from "../../store/slices/userSlice";
 import { useTranslation } from "react-i18next";
-
-
 
 const FormContent = () => {
   const dispatch = useDispatch();
@@ -26,18 +25,20 @@ const FormContent = () => {
   const [lastname, setLastName] = useState<string>("");
   const [birth, setBirth] = useState<{}>("");
   const [nationality, setNationality] = useState<string>("");
-  const [idcard, _setiDcard] = useState<string>("");
+
   const [gender, setiGender] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
   const [passport, setPassport] = useState<string>("");
   const [saraly, setSaraly] = useState<string>("");
   const [prefixPhone, setprefixphone] = useState<string>("");
-
- 
- 
-
+  const[idCard1,setiDcard1]=useState<string>("")
+  const[idCard2,setiDcard2]=useState<string>("")
+  const[idCard3,setiDcard3]=useState<string>("")
+  const[idCard4,setiDcard4]=useState<string>("")
+  const[idCard5, setiDcard5]=useState<string>("")
+  const[jsonnationaity, setjsonnationaity]=useState(nationality_TH)
   const usersReducer = useSelector(userSelector);
-
+ 
   const [form] = Form.useForm();
   const onFinish = (): void => {
     dispatch(
@@ -48,19 +49,24 @@ const FormContent = () => {
         lastname: lastname,
         birth: birth,
         nationality: nationality,
-        idCard: idcard,
+        idCard: idCard1 +idCard2+idCard3+idCard4+idCard5,
         phone: phone,
         gerder: gender,
         passport: passport,
         slary: saraly,
       })
     );
-
-    
   };
-  
+
   const handChangPrefix = (value: string) => {
     setprefix(value);
+    if(value == "Mr" ||value == "Ms" ||value == "Miss"){
+      setjsonnationaity(nationality_en)
+    }else{
+      setjsonnationaity(nationality_TH)
+      
+      
+    }
   };
 
   const dateFormat = "MM/DD/YYYY";
@@ -68,37 +74,31 @@ const FormContent = () => {
     setBirth(dateString);
   };
 
-  const handleChangeNationality = (e:any) => {
+  const handleChangeNationality = (e: any) => {
     setNationality(e.value);
     return e.value;
   };
   const handlepprefixhone = (value:any) => {
-    setprefixphone(value.value )
-    
-    
+    setprefixphone(value.value);
   };
 
-const  onChangePhone =(e:React.ChangeEvent<HTMLInputElement>)=>{
-  if(e.target.value.length >9){
-    const phone = e.target.value
-    const deleteZero = phone.substring(1,10)
-    console.log(deleteZero);
-    setPhone(`${prefixPhone}  ${deleteZero}`)
-  }else{
-    setPhone(`${prefixPhone}  ${e.target.value}`)
-  }
-   
-     
-}
+  const onChangePhone = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.value.length > 9) {
+      const phone = e.target.value;
+      const deleteZero = phone.substring(1, 10);
+      console.log(deleteZero);
+      setPhone(`${prefixPhone}  ${deleteZero}`);
+    } else {
+      setPhone(`${prefixPhone}  ${e.target.value}`);
+    }
+  };
 
-
-
-
+  
   const onChangeGender = (e: RadioChangeEvent) => {
     console.log("radio checked", e.target.value);
     setiGender(e.target.value);
   };
-const {t } =useTranslation(['th' ,'en'])
+  const { t } = useTranslation(["th", "en"]);
   return (
     <div>
       <Form form={form} name="control-hooks" onFinish={onFinish}>
@@ -107,25 +107,30 @@ const {t } =useTranslation(['th' ,'en'])
 
           <Form.Item
             name="prefix"
-            label={t("prefix", {ns:['th' , 'en']})}
-            rules={[{ required: true, message: "กรุณาเลือกคำนำหน้า" }]}
+            label={t("prefix", { ns: ["th", "en"] })}
+            rules={[
+              {
+                required: true,
+                message: `${t("Pleaseselectprefix", { ns: ["th", "en"] })} `,
+              },
+            ]}
           >
             <Select
-              placeholder={t("prefix", {ns:['th' , 'en']})}
+              placeholder={t("prefix", { ns: ["th", "en"] })}
               style={{ width: 80, marginLeft: 10 }}
               onChange={handChangPrefix}
               options={[
                 {
-                  value: "นาย",
-                  label: `${ t("prefix1", {ns:['th' , 'en']})  }`
+                  value: `${t("prefix1", { ns: ["th", "en"] })}`,
+                  label: `${t("prefix1", { ns: ["th", "en"] })}`,
                 },
                 {
-                  value: "นาง",
-                  label: `${ t("prefix3", {ns:['th' , 'en']})  }`
+                  value: `${t("prefix2", { ns: ["th", "en"] })}`,
+                  label: `${t("prefix3", { ns: ["th", "en"] })}`,
                 },
                 {
-                  value: "นางสาว",
-                  label: `${ t("prefix2", {ns:['th' , 'en']})  }`
+                  value: `${t("prefix3", { ns: ["th", "en"] })}`,
+                  label: `${t("prefix2", { ns: ["th", "en"] })}`,
                 },
               ]}
             />
@@ -133,8 +138,13 @@ const {t } =useTranslation(['th' ,'en'])
           {/**----------------------------- name-------------------------- */}
           <Form.Item
             name="name"
-            label={t("name", {ns:['th' , 'en']})}
-            rules={[{ required: true, message: "กรุณากรอกชื่อ" }]}
+            label={t("name", { ns: ["th", "en"] })}
+            rules={[
+              {
+                required: true,
+                message: `${t("Pleaseenteryourname", { ns: ["th", "en"] })} `,
+              },
+            ]}
             style={{ marginLeft: 20 }}
           >
             <Input
@@ -146,8 +156,13 @@ const {t } =useTranslation(['th' ,'en'])
           {/**----------------------------lastname--------------------------- */}
           <Form.Item
             name="lastname"
-            label={t("lastname", {ns:['th' , 'en']})}
-            rules={[{ required: true, message: "กรุณากรอกนามสกุล" }]}
+            label={t("lastname", { ns: ["th", "en"] })}
+            rules={[
+              {
+                required: true,
+                message: `${t("PleaseenteryourLast", { ns: ["th", "en"] })} `,
+              },
+            ]}
             style={{ marginLeft: 20 }}
           >
             <Input
@@ -162,11 +177,16 @@ const {t } =useTranslation(['th' ,'en'])
 
           <Form.Item
             name="birth"
-            label={t("birth", {ns:['th' , 'en']})}
-            rules={[{ required: true, message: "กรุุณาระบุ วันเกิด" }]}
+            label={t("birth", { ns: ["th", "en"] })}
+            rules={[
+              {
+                required: true,
+                message: `${t("Pleaseenterbirth", { ns: ["th", "en"] })} `,
+              },
+            ]}
           >
             <DatePicker
-              placeholder={t("birthplaceholder", {ns:['th' , 'en']})}
+              placeholder={t("birthplaceholder", { ns: ["th", "en"] })}
               format={dateFormat}
               onChange={onChangebirth}
             />
@@ -175,20 +195,27 @@ const {t } =useTranslation(['th' ,'en'])
 
           <Form.Item
             name="์nationality"
-            label={t("nationlity", {ns:['th' , 'en']})}
-            rules={[{ required: true, message: "กรุณาเลือกสัญชาติ" }]}
+            label={t("nationlity", { ns: ["th", "en"] })}
+            rules={[
+              {
+                required: true,
+                message: `${t("Pleaseenternationality", {
+                  ns: ["th", "en"],
+                })} `,
+              },
+            ]}
             style={{ marginLeft: 20 }}
           >
             <Select
               labelInValue
-              placeholder={t("Pleaseselect", {ns:['th' , 'en']})}
+              placeholder={t("Pleaseselect", { ns: ["th", "en"] })}
               style={{ width: 250, marginLeft: 0 }}
               onChange={handleChangeNationality}
             >
-              {nationality_TH.map((item, index) => {
+              {jsonnationaity.map((item, index) => {
                 return (
-                  <option key={`type-key=${index}`} value={item} >
-                 {item}
+                  <option key={`type-key=${index}`} value={item}>
+                    {item}
                   </option>
                 );
               })}
@@ -201,20 +228,39 @@ const {t } =useTranslation(['th' ,'en'])
 
           <Form.Item
             name="idNumber"
-            label={t("idCard", {ns:['th' , 'en']})}
-            rules={[{ required: true, message: "กรุุณาระบุ เลขบัตรประชาชน" }]}
+            label={t("idCard", { ns: ["th", "en"] })}
+            rules={[
+              {
+                required: true,
+                message: `${t("PleaseenterIdCard", { ns: ["th", "en"] })} `,
+              },
+            ]}
           >
-            <Flex style={{width:"500px"}} justify="space-around">
-            <Input maxLength={1} style={{width:"50px", textAlign:"center"}}></Input>
-            <label style={{fontSize:"22px"}}>-</label>
-            <Input  maxLength={4} style={{width:"100px",textAlign:"center" }}></Input>
-           <label  style={{fontSize:"22px"}}>-</label>
-           <Input  maxLength={5} style={{width:"100px",textAlign:"center" }}></Input>
-           <label style={{fontSize:"22px"}}>-</label>
-           <Input maxLength={2} style={{width:"80px",textAlign:"center" }}></Input>
-           <label style={{fontSize:"22px"}}>-</label>
-           <Input maxLength={1} style={{width:"50px",textAlign:"center" }}></Input>
-           </Flex>
+           
+              <Flex style={{ width: "500px" }} justify="space-around">
+                <Input onChange={(e)=>setiDcard1(e.target.value)} maxLength={1}style={{ width: "50px", textAlign: "center" }}></Input>
+                
+                <label style={{ fontSize: "22px" }}>-</label>
+                
+                <Input  onChange={(e)=>setiDcard2(e.target.value)} maxLength={4} style={{ width: "100px", textAlign: "center" }} ></Input>
+                 
+                <label style={{ fontSize: "22px" }}>-</label>
+                <Input onChange={(e)=>setiDcard3(e.target.value)}maxLength={5}style={{ width: "100px", textAlign: "center" }} ></Input>
+                 
+                
+                <label style={{ fontSize: "22px" }}>-</label>
+                
+                <Input onChange={(e)=>setiDcard4(e.target.value)}  maxLength={2}style={{ width: "80px", textAlign: "center" }}></Input>
+
+                  
+                <label style={{ fontSize: "22px" }}>-</label>
+                <Input onChange={(e)=>setiDcard5(e.target.value)}maxLength={1} style={{ width: "50px", textAlign: "center" }} ></Input>
+                 
+                  
+                 
+               
+              </Flex>
+             
           </Form.Item>
         </Flex>
 
@@ -223,13 +269,20 @@ const {t } =useTranslation(['th' ,'en'])
 
           <Form.Item
             name="gender"
-            label={t("sex", {ns:['th' , 'en']})}
-            rules={[{ required: true, message: "กรุุณาระบุเพศ" }]}
+            label={t("sex", { ns: ["th", "en"] })}
+            rules={[
+              {
+                required: true,
+                message: `${t("PleaseenterGnder", { ns: ["th", "en"] })} `,
+              },
+            ]}
           >
             <Radio.Group onChange={onChangeGender} value={gender}>
-              <Radio value={"ผู้ชาย"}>{t("male", {ns:['th' , 'en']})}</Radio>
-              <Radio value={"female"}>{t("sex", {ns:['th' , 'en']})}</Radio>
-              <Radio value={"ไม่ระบุ"}>{t("notgender", {ns:['th' , 'en']})}</Radio>
+              <Radio value={"ผู้ชาย"}>{t("male", { ns: ["th", "en"] })}</Radio>
+              <Radio value={"female"}>{t("female", { ns: ["th", "en"] })}</Radio>
+              <Radio value={"ไม่ระบุ"}>
+                {t("notgender", { ns: ["th", "en"] })}
+              </Radio>
             </Radio.Group>
           </Form.Item>
         </Flex>
@@ -239,15 +292,20 @@ const {t } =useTranslation(['th' ,'en'])
 
           <Form.Item
             name="idNumber"
-            label={t("phone", {ns:['th' , 'en']})}
-            rules={[{ required: true, message: "กรุุณากรอกเบอร์โทร" }]}
+            label={t("phone", { ns: ["th", "en"] })}
+            rules={[
+              {
+                required: true,
+                message: `${t("PleaseenterPhone", { ns: ["th", "en"] })} `,
+              },
+            ]}
           >
             <Flex>
               <Select
                 labelInValue
                 defaultValue={"+66"}
                 style={{ width: 90, marginLeft: 0 }}
-                onChange={ handlepprefixhone}
+                onChange={handlepprefixhone}
               >
                 {codephone.map((item, index) => {
                   return (
@@ -260,7 +318,7 @@ const {t } =useTranslation(['th' ,'en'])
 
               <span>-</span>
               <Input
-              maxLength={10}
+                maxLength={10}
                 onChange={onChangePhone}
                 style={{ width: 200, marginLeft: 20 }}
               />
@@ -270,7 +328,10 @@ const {t } =useTranslation(['th' ,'en'])
 
         {/**-------------------------passport---------------------------- */}
         <div>
-          <Form.Item name="passport" label={t("passport", {ns:['th' , 'en']})}>
+          <Form.Item
+            name="passport"
+            label={t("passport", { ns: ["th", "en"] })}
+          >
             <Input
               onChange={(e) => setPassport(e.target.value)}
               style={{ width: 250 }}
@@ -283,9 +344,12 @@ const {t } =useTranslation(['th' ,'en'])
 
           <Form.Item
             name="saraly"
-            label={t("salary", {ns:['th' , 'en']})}
+            label={t("salary", { ns: ["th", "en"] })}
             rules={[
-              { required: true, message: "กรุุณาระบุ เงินเดือนที่คาดหวัง" },
+              {
+                required: true,
+                message: `${t("PleaseenterSalary", { ns: ["th", "en"] })} `,
+              },
             ]}
           >
             <Input
@@ -296,9 +360,12 @@ const {t } =useTranslation(['th' ,'en'])
           {/**-----------------------button--------------------------- */}
           <div style={{ marginRight: 200 }}>
             <Button htmlType="reset" style={{ marginRight: 40 }}>
-            {t("reset", {ns:['th' , 'en']})}
+              {t("reset", { ns: ["th", "en"] })}
             </Button>
-            <Button htmlType="submit">  {t("send", {ns:['th' , 'en']})}</Button>
+            <Button htmlType="submit">
+              {" "}
+              {t("send", { ns: ["th", "en"] })}
+            </Button>
           </div>
         </Flex>
       </Form>

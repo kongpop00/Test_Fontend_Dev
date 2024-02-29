@@ -21,7 +21,7 @@ const Test_1Style = ({
   MoveShapeLeft,
   MoveShapeRight,
 }: Props) => {
-  const { t } = useTranslation(["home", "main"]);
+  const {t} = useTranslation(["th", "en"]);
 
   return (
     <div>
@@ -52,7 +52,7 @@ const Test_1Style = ({
                 />
               </Button>
               <label className="btnAbs">
-                {t("MoveShape", { ns: ["main ", "home"] })}
+                {t("MoveShape", { ns: ["th", "en"] })}
               </label>
             </Col>
             <Col span={12}>
@@ -66,7 +66,7 @@ const Test_1Style = ({
                 </Flex>
               </Button>
               <label className="btnAbs">
-                {t("MovePosition", { ns: ["main ", "home"] })}
+                {t("MovePosition", { ns: ["th", "en"] })}
               </label>
             </Col>
             <Col span={6}>
@@ -77,7 +77,7 @@ const Test_1Style = ({
                 />
               </Button>
               <label className="btnAbs">
-                {t("MoveShape", { ns: ["main ", "home"] })}
+                {t("MoveShape", { ns: ["th", "en"] })}
               </label>
             </Col>
           </Row>

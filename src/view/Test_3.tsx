@@ -5,8 +5,11 @@ import NavTest_3 from "../component/NavTest_3";
 
 const Test_3 = () => {
   return (
-    <div className="viewblackground" style={{ height: "100%",paddingInline:"120px" }}>
-      <NavTest_3  />
+    <div
+      className="viewblackground"
+      style={{ height: "100%", paddingInline: "120px" }}
+    >
+      <NavTest_3 />
       <Flex
         vertical={true}
         align="center"
@@ -19,7 +22,7 @@ const Test_3 = () => {
             height: 430,
             backgroundColor: "transparent",
             borderColor: "black",
-            marginBottom:"70px"
+            marginBottom: "70px",
           }}
         >
           <FormContent />
@@ -28,7 +31,6 @@ const Test_3 = () => {
 
       <div
         style={{
-       
           width: "80%",
           height: "100%",
           margin: "auto",
