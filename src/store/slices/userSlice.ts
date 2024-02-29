@@ -1,5 +1,4 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-//import type { PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from "../store";
 
 interface User {
@@ -24,6 +23,7 @@ export const UserSlice = createSlice({
   reducers: {
     addUser: (state: User[], action: PayloadAction<any>) => {
       state.push(action.payload);
+
       localStorage.setItem("Users", JSON.stringify(state));
     },
 

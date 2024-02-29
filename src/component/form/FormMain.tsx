@@ -25,7 +25,6 @@ const FormContent = () => {
   const [lastname, setLastName] = useState<string>("");
   const [birth, setBirth] = useState<{}>("");
   const [nationality, setNationality] = useState<string>("");
-
   const [gender, setiGender] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
   const [passport, setPassport] = useState<string>("");
@@ -56,6 +55,7 @@ const FormContent = () => {
         slary: saraly,
       })
     );
+    form.resetFields();
   };
 
   const handChangPrefix = (value: string) => {
