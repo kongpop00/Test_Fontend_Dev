@@ -9,7 +9,7 @@ import {
   RadioChangeEvent,
   Select,
 } from "antd";
-import nationality_TH from "./nationlity_TH.json";
+
 import nationality_en from './nationality .json'
 import codephone from "./codephone.json";
 import {  useState } from "react";
@@ -28,54 +28,57 @@ const FormContent = () => {
   const [gender, setiGender] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
   const [passport, setPassport] = useState<string>("");
-  const [saraly, setSaraly] = useState<string>("");
-  const [prefixPhone, setprefixphone] = useState<string>("");
+  const [salary, setSaraly] = useState<string>("");
+  const [prefixPhone, setprefixphone] = useState<string>("+66");
   const[idCard1,setiDcard1]=useState<string>("")
   const[idCard2,setiDcard2]=useState<string>("")
   const[idCard3,setiDcard3]=useState<string>("")
   const[idCard4,setiDcard4]=useState<string>("")
   const[idCard5, setiDcard5]=useState<string>("")
-  const[jsonnationaity, setjsonnationaity]=useState(nationality_TH)
+
   const usersReducer = useSelector(userSelector);
  
   const [form] = Form.useForm();
   const onFinish = (): void => {
-    dispatch(
-      addUser({
-        id: usersReducer.length + 1,
-        prefix: prefix,
-        name: name,
-        lastname: lastname,
-        birth: birth,
-        nationality: nationality,
-        idCard: idCard1 +idCard2+idCard3+idCard4+idCard5,
-        phone: phone,
-        gerder: gender,
-        passport: passport,
-        slary: saraly,
-      })
-    );
-    form.resetFields();
+    if((idCard1 +idCard2+idCard3+idCard4+idCard5).length !==13){
+      alert(`${t("PleaseenterIdCard", { ns: ["th", "en"] })}`)
+    }else{
+      dispatch(
+        addUser({
+          id: usersReducer.length + 1,
+          prefix: prefix,
+          name: name,
+          lastname: lastname,
+          birth: birth,
+          nationality: nationality,
+          idCard: idCard1 +idCard2+idCard3+idCard4+idCard5,
+          phone: phone,
+          prefixPhone: prefixPhone,
+          gender: gender,
+          passport: passport,
+          salary: salary,
+        })
+      );
+      form.resetFields();
+    }
+ 
   };
 
   const handChangPrefix = (value: string) => {
     setprefix(value);
-    if(value == "Mr" ||value == "Ms" ||value == "Miss"){
-      setjsonnationaity(nationality_en)
-    }else{
-      setjsonnationaity(nationality_TH)
-      
-      
-    }
+    
   };
 
   const dateFormat = "MM/DD/YYYY";
   const onChangebirth: DatePickerProps["onChange"] = (_date, dateString) => {
     setBirth(dateString);
+    
   };
 
   const handleChangeNationality = (e: any) => {
     setNationality(e.value);
+    console.log(e.value);
+    
     return e.value;
   };
   const handlepprefixhone = (value:any) => {
@@ -95,10 +98,14 @@ const FormContent = () => {
 
   
   const onChangeGender = (e: RadioChangeEvent) => {
-    console.log("radio checked", e.target.value);
+    const a = e.target.value
+    console.log(typeof a);
+    
     setiGender(e.target.value);
   };
   const { t } = useTranslation(["th", "en"]);
+ 
+
   return (
     <div>
       <Form form={form} name="control-hooks" onFinish={onFinish}>
@@ -148,6 +155,7 @@ const FormContent = () => {
             style={{ marginLeft: 20 }}
           >
             <Input
+            
               onChange={(e) => setname(e.target.value)}
               style={{ width: 250, marginLeft: 0 }}
             />
@@ -186,6 +194,7 @@ const FormContent = () => {
             ]}
           >
             <DatePicker
+          
               placeholder={t("birthplaceholder", { ns: ["th", "en"] })}
               format={dateFormat}
               onChange={onChangebirth}
@@ -194,8 +203,8 @@ const FormContent = () => {
           {/**----------------------- nationality-------------------------- */}
 
           <Form.Item
-            name="์nationality"
-            label={t("nationlity", { ns: ["th", "en"] })}
+            name="nationality "
+            label={t("nationality", { ns: ["th", "en"] })}
             rules={[
               {
                 required: true,
@@ -212,10 +221,10 @@ const FormContent = () => {
               style={{ width: 250, marginLeft: 0 }}
               onChange={handleChangeNationality}
             >
-              {jsonnationaity.map((item, index) => {
+              {nationality_en.map((nationality, index) => {
                 return (
-                  <option key={`type-key=${index}`} value={item}>
-                    {item}
+                  <option key={`type-key=${index}`} value={nationality}>
+                   {t(nationality, { ns: ["th", "en"] })}
                   </option>
                 );
               })}
@@ -236,7 +245,6 @@ const FormContent = () => {
               },
             ]}
           >
-           
               <Flex style={{ width: "500px" }} justify="space-around">
                 <Input onChange={(e)=>setiDcard1(e.target.value)} maxLength={1}style={{ width: "50px", textAlign: "center" }}></Input>
                 
@@ -278,11 +286,9 @@ const FormContent = () => {
             ]}
           >
             <Radio.Group onChange={onChangeGender} value={gender}>
-              <Radio value={"ผู้ชาย"}>{t("male", { ns: ["th", "en"] })}</Radio>
+              <Radio value={"male"}>{t("male", { ns: ["th", "en"] })}</Radio>
               <Radio value={"female"}>{t("female", { ns: ["th", "en"] })}</Radio>
-              <Radio value={"ไม่ระบุ"}>
-                {t("notgender", { ns: ["th", "en"] })}
-              </Radio>
+              <Radio value={"notgender"} >{t("notgender", { ns: ["th", "en"] })} </Radio>
             </Radio.Group>
           </Form.Item>
         </Flex>
@@ -303,7 +309,7 @@ const FormContent = () => {
             <Flex>
               <Select
                 labelInValue
-                defaultValue={"+66"}
+                defaultValue={prefixPhone}
                 style={{ width: 90, marginLeft: 0 }}
                 onChange={handlepprefixhone}
               >
@@ -343,7 +349,7 @@ const FormContent = () => {
           {/**--------------------- saraly---------------------- */}
 
           <Form.Item
-            name="saraly"
+            name="salary"
             label={t("salary", { ns: ["th", "en"] })}
             rules={[
               {
@@ -374,3 +380,4 @@ const FormContent = () => {
 };
 
 export default FormContent;
+

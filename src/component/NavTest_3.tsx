@@ -1,4 +1,5 @@
 import { Button, Flex, Select } from "antd";
+
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
@@ -9,6 +10,7 @@ const NavTest_3 = () => {
     const language = value;
     i18n.changeLanguage(language);
   };
+
   return (
     <Flex
       style={{
@@ -27,7 +29,7 @@ const NavTest_3 = () => {
 
       <Flex vertical={true} gap={20}>
         <Select
-          defaultValue="English"
+          defaultValue={"English"}
           style={{ width: 100, height: "50px" }}
           onChange={handleChangeLanguage}
           options={[

@@ -10,7 +10,7 @@ import {
 } from "../store/slices/userSlice";
 import type { CheckboxProps } from "antd";
 import { useTranslation } from "react-i18next";
-
+import { useNavigate } from 'react-router-dom';
 interface DataType {
   key: React.Key;
   id: number;
@@ -18,13 +18,17 @@ interface DataType {
   gender: string;
   phone: string;
   nationality: string;
+
 }
 
-const DataTable = () => {
 
+const DataTable = () => {
+   const usersReducer = useSelector(userSelector);
+ 
+  const navigate = useNavigate();
   const [checkAll, setCheckAll] = useState<boolean>(false);
   const [selectedRows, setSelectedRows] = useState<any[]>([]);
-  const usersReducer = useSelector(userSelector);
+ 
 
   const dispatch = useDispatch();
   const {t } =useTranslation(['th' ,'en'])
@@ -32,6 +36,12 @@ const DataTable = () => {
     dispatch(deleteUser({ id: record.id }));
   };
 
+
+  const onEdit =(record:any)=>{
+   console.log(record.id);
+   navigate(`/edit/${record.id}`)
+   
+  }
   const columns: TableColumnsType<DataType> = [
     {
       title:`${t("name", {ns:['th' , 'en']})}`,
@@ -57,10 +67,15 @@ const DataTable = () => {
     {
       title:  `${t("action", {ns:['th' , 'en']})}`,
       key: " action",
-      render: (record: number) => (
-        <Button style={{backgroundColor:"#e04a3a", fontSize:"15px" ,color:"white"}} onClick={() => onDeleteUser(record)}> {t("delete", {ns:['th' , 'en']})}</Button>
+      render: (record: number ) => (
+        <div>
+           <Button  style={{backgroundColor:"#1677ff", fontSize:"15px" ,color:"white", marginRight:"10px"}} onClick={()=>onEdit(record)} > {t("Edit", {ns:['th' , 'en']})}</Button>
+           <Button style={{backgroundColor:"#e04a3a", fontSize:"15px" ,color:"white"}} onClick={() => onDeleteUser(record)}> {t("delete", {ns:['th' , 'en']})}</Button>
+        </div>
+       
       ),
     },
+    
   ];
 
   const rowSelection = {
@@ -79,16 +94,19 @@ const DataTable = () => {
       name: record.name,
     }),
   };
-
-  const users: DataType[] = usersReducer.map((e) => {
+  
+ 
+  
+  const users: any[] = usersReducer.map((e:any) => {
     return {
       key:e.id,
       id: e.id,
       name: e.name,
-      gender: e.gerder,
+      gender:`${t(e.gender, {ns:['th' , 'en']})}` ,
       phone: e.phone,
-      nationality: e.nationality,
+      nationality: `${t(e.nationality, {ns:['th' , 'en']})}`,
     };
+ 
   });
 
   const onChangeDeleteAll: CheckboxProps["onChange"] = (e) => {
@@ -123,6 +141,7 @@ const DataTable = () => {
         pagination={{ pageSize: 4 }}
         columns={columns}
       />
+     
     </Flex>
   );
 };

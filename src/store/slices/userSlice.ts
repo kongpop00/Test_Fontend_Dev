@@ -10,9 +10,10 @@ interface User {
   nationality: string;
   idCard: string;
   phone: string;
-  gerder: string;
+  gender: string;
   passport: string;
-  slary: string;
+  salary: string;
+  prefixPhone:string
 }
 
 const initialState: User[] = JSON.parse(localStorage.getItem("Users") || "[]");
@@ -62,10 +63,29 @@ export const UserSlice = createSlice({
       localStorage.setItem("Users", JSON.stringify(state));
       return state;
     },
+
+    EditUser :(state ,action)=>{
+      const {id, prefix, name,lastname,birth, nationality,idCard,phone,gender,passport, salary, prefixPhone} =action.payload
+      const edit  = state.find(user =>user.id == id);
+      if(edit){
+        edit.prefix =prefix;
+        edit.name = name;
+        edit.lastname =lastname;
+        edit.nationality = nationality;
+        edit.birth= birth;
+        edit.idCard = idCard;
+        edit.phone =phone;
+        edit.gender =gender;
+        edit.passport =passport;
+        edit.salary =salary;
+        edit.prefixPhone =prefixPhone;
+      }
+      localStorage.setItem("Users", JSON.stringify(state));
+    }
   },
 });
 
-export const { addUser, deleteUser, deleteUserAll, deleteUserSelect } =
+export const { addUser, deleteUser, deleteUserAll, deleteUserSelect ,EditUser } =
   UserSlice.actions;
 export const userSelector = (store: RootState) => store.users; // เอาชื่อไว้ใน store
 export default UserSlice.reducer;

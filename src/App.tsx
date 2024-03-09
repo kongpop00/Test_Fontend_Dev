@@ -4,6 +4,7 @@ import Home from "./view/Home";
 import Test_1 from "./view/Test_1";
 import Test_3 from "./view/Test_3";
 import NotFound from "./view/NotFound";
+import Edit from "./view/Edit";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/test1" element={<Test_1 />} />
         <Route path="/*" element={<NotFound />} />
         <Route path="/test3" element={<Test_3 />} />
+        <Route path="/edit/:id" element={<Edit />} />
       </Routes>
       <h1> </h1>
     </>
