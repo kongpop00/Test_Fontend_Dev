@@ -116,10 +116,10 @@ const Edit = () => {
 
   const handleChangenationality = (e: any) => {
     setNationality(e.value);
-    console.log("====", e.value);
+
   };
-  const handlepprefixhone = (value: any) => {
-    setprefixphone(value.value);
+  const handlepprefixhone = (e: any) => {
+    setprefixphone(e.value);
   };
 
   const onChangePhone = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -235,6 +235,7 @@ const Edit = () => {
           >
           <Select
               labelInValue
+              defaultValue={t(enationality, { ns: ["th", "en"] })}
               placeholder={t("Pleaseselect", { ns: ["th", "en"] })}
               style={{ width: 250, marginLeft: 0 }}
               onChange={handleChangenationality}
