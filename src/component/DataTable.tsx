@@ -60,7 +60,7 @@ const DataTable = () => {
       sorter: (a, b) => b.phone.localeCompare(a.phone),
     },
     {
-      title:  `${t("nationlity", {ns:['th' , 'en']})}`,
+      title:  `${t("nationality", {ns:['th' , 'en']})}`,
       dataIndex: "nationality",
       sorter: (a, b) => b.nationality.localeCompare(a.nationality),
     },
